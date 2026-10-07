@@ -1,0 +1,180 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+    min-height: 100vh;
+    padding: 40px 20px;
+}
+
+.container {
+    max-width: 700px;
+    margin: auto;
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.add-form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.add-form input {
+    flex: 1;
+    padding: 13px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+button {
+    border: none;
+    padding: 12px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.add-btn {
+    background: #222;
+    color: white;
+}
+
+.task {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.task-title {
+    font-size: 16px;
+}
+
+.completed {
+    text-decoration: line-through;
+    color: #888;
+}
+
+.actions {
+    display: flex;
+    gap: 6px;
+}
+
+.actions a {
+    text-decoration: none;
+    padding: 7px 10px;
+    border-radius: 6px;
+    font-size: 13px;
+}
+
+.complete {
+    background: #dff5e1;
+    color: #217a2b;
+}
+
+.edit {
+    background: #fff0c2;
+    color: #8a6500;
+}
+
+.delete {
+    background: #ffe0e0;
+    color: #b00020;
+}
+
+.empty {
+    text-align: center;
+    color: #888;
+    padding: 20px;
+}
+
+@media (max-width: 600px) {
+    .add-form {
+        flex-direction: column;
+    }
+
+    .task {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+}
+
+.stats {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+    gap: 10px;
+}
+
+.stats div {
+    flex: 1;
+    text-align: center;
+    padding: 12px;
+    background: #f4f6f8;
+    border-radius: 10px;
+}
+
+.stats strong {
+    display: block;
+    font-size: 22px;
+}
+
+.stats span {
+    font-size: 13px;
+    color: #777;
+}
+
+.filters {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.filters a {
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 7px;
+    background: #f0f0f0;
+    color: #333;
+    font-size: 13px;
+}
+
+.filters .active-filter {
+    background: #222;
+    color: white;
+}
+
+.filters .clear-btn {
+    margin-left: auto;
+    background: #ffe0e0;
+    color: #b00020;
+}
+
+@media (max-width: 600px) {
+    .stats {
+        flex-direction: column;
+    }
+
+    .filters .clear-btn {
+        margin-left: 0;
+    }
+}
+

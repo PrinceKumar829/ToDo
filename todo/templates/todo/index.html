@@ -1,0 +1,115 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My To-Do App</title>
+    <link rel="stylesheet" href="{% static 'todo/style.css' %}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>My To-Do List</h1>
+
+    <div class="stats">
+        <div>
+            <strong>{{ total_count }}</strong>
+            <span>Total</span>
+        </div>
+
+        <div>
+            <strong>{{ pending_count }}</strong>
+            <span>Pending</span>
+        </div>
+
+        <div>
+            <strong>{{ completed_count }}</strong>
+            <span>Completed</span>
+        </div>
+    </div>
+
+    <form method="POST" class="add-form">
+        {% csrf_token %}
+
+        <input
+            type="text"
+            name="title"
+            placeholder="Enter a new task..."
+            required
+        >
+
+        <button type="submit" class="add-btn">
+            Add Task
+        </button>
+    </form>
+
+    <div class="filters">
+
+        <a href="?filter=all"
+           class="{% if filter_type == 'all' %}active-filter{% endif %}">
+            All
+        </a>
+
+        <a href="?filter=active"
+           class="{% if filter_type == 'active' %}active-filter{% endif %}">
+            Pending
+        </a>
+
+        <a href="?filter=completed"
+           class="{% if filter_type == 'completed' %}active-filter{% endif %}">
+            Completed
+        </a>
+
+        <a href="{% url 'clear_completed' %}"
+           class="clear-btn">
+            Clear Completed
+        </a>
+
+    </div>
+
+    <div class="tasks">
+
+        {% for todo in todos %}
+
+        <div class="task">
+
+            <span class="task-title {% if todo.completed %}completed{% endif %}">
+                {{ todo.title }}
+            </span>
+
+            <div class="actions">
+
+                <a class="complete" href="{% url 'complete' todo.id %}">
+                    {% if todo.completed %}
+                        Undo
+                    {% else %}
+                        Complete
+                    {% endif %}
+                </a>
+
+                <a class="edit" href="{% url 'edit' todo.id %}">
+                    Edit
+                </a>
+
+                <a class="delete" href="{% url 'delete' todo.id %}">
+                    Delete
+                </a>
+
+            </div>
+
+        </div>
+
+        {% empty %}
+
+        <p class="empty">No tasks found.</p>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+</body>
+</html>
